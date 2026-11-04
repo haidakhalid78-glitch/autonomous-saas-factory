@@ -84,13 +84,13 @@
             const out = document.getElementById('preview2');
             if(!val.trim()) { alert('Inserisci una keyword!'); return; }
             out.style.display = 'block';
-            out.innerHTML = "🔥 #"+val.replace(/\s+/g, '') + " #viral #sidehustle #trending #creator #italia #shoponline #business";
+            out.innerHTML = "🔥 #" + val.replace(/\\s+/g, '') + " #viral #sidehustle #trending #creator #italia #shoponline #business";
         }
 
         function boostIdea() {
             const val = document.getElementById('ideaInput').value;
             const out = document.getElementById('preview3');
-            if(!val.trim()) { alert('Inserisci un\'idea!'); return; }
+            if(!val.trim()) { alert('Inserisci un\\'idea!'); return; }
             out.style.display = 'block';
             out.innerHTML = "🎯 Potenziale alto se abbinato a brevi video dimostrativi e traffico organico da TikTok!";
         }
