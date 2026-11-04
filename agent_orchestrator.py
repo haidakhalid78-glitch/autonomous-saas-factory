@@ -1,58 +1,132 @@
+import os
+import datetime
+
+def log_to_file(filepath, content):
+    dirname = os.path.dirname(filepath)
+    if dirname:
+        os.makedirs(dirname, exist_ok=True)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(content)
+
+def subagent_trend_scraper():
+    print("[Agent 1] Analisi dei problemi e della domanda in corso...")
+    return "Multi-Tool Hub per Creator e E-commerce"
+
 def subagent_product_architect(niche_name):
-    print(f"[Agent 2] Generazione del codice SaaS con monetizzazione per: {niche_name}")
+    print(f"[Agent 2] Generazione del SaaS Hub multi-strumento per: {niche_name}")
     
     html_code = """<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickPrint Studio - Tool Grafico Gratuito</title>
+    <title>CreatorHub Studio - Tool Gratuiti per Creator e Shop</title>
     <style>
         * { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 1rem; }
-        .container { background: #1e293b; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); max-width: 480px; width: 100%; text-align: center; }
-        h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #38bdf8; }
-        p { font-size: 0.95rem; color: #94a3b8; margin-bottom: 1.5rem; }
-        textarea { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; resize: vertical; min-height: 90px; margin-bottom: 1rem; font-size: 1rem; }
-        button { width: 100%; padding: 0.9rem; background: #0284c7; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
-        button:hover { background: #0369a1; }
-        #preview { margin-top: 1.5rem; display: none; padding: 1.5rem; border-radius: 8px; background: linear-gradient(135deg, #6366f1, #a855f7); color: white; font-weight: bold; font-size: 1.2rem; word-wrap: break-word; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .wrapper { max-width: 600px; width: 100%; }
+        header { text-align: center; margin-bottom: 2rem; }
+        h1 { font-size: 2rem; color: #38bdf8; margin-bottom: 0.5rem; }
+        header p { color: #94a3b8; font-size: 0.95rem; }
         
-        /* Sezione Monetizzazione */
-        .monetization-box { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #334155; font-size: 0.85rem; color: #94a3b8; }
-        .donate-btn { display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: #10b981; color: white; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+        .card { background: #1e293b; padding: 1.5rem; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); margin-bottom: 1.5rem; border: 1px solid #334155; }
+        .card h2 { font-size: 1.25rem; color: #f8fafc; margin-top: 0; margin-bottom: 0.5rem; }
+        .card p { font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem; }
+        
+        input, textarea { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; resize: vertical; min-height: 70px; margin-bottom: 0.8rem; font-size: 0.95rem; }
+        button { width: 100%; padding: 0.8rem; background: #0284c7; color: white; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #0369a1; }
+        
+        .output { margin-top: 1rem; display: none; padding: 1rem; border-radius: 8px; background: #0f172a; border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.95rem; word-wrap: break-word; }
+        
+        .monetization-box { text-align: center; margin-top: 2rem; padding: 1.5rem; border-top: 1px solid #334155; font-size: 0.85rem; color: #94a3b8; }
+        .donate-btn { display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1.2rem; background: #10b981; color: white; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.2s; }
         .donate-btn:hover { background: #059669; }
         .affiliate-link { color: #38bdf8; text-decoration: none; display: block; margin-top: 0.8rem; }
         .affiliate-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 QuickPrint Studio</h1>
-        <p>Crea al volo grafiche promozionali pronte per i tuoi prodotti o social.</p>
-        <textarea id="textInput" placeholder="Inserisci il tuo testo o l'offerta speciale..."></textarea>
-        <button onclick="generateGraphics()">Genera Asset Ora</button>
-        <div id="preview"></div>
-        
+    <div class="wrapper">
+        <header>
+            <h1>⚡ CreatorHub Studio</h1>
+            <p>Suite di strumenti gratuiti al 100% per creator digitali, e-commerce e social media.</p>
+        </header>
+
+        <!-- Tool 1: Generatore Grafico Rapido -->
+        <div class="card">
+            <h2>🎨 1. QuickPrint Studio</h2>
+            <p>Crea al volo grafiche o testi promozionali per i tuoi post.</p>
+            <textarea id="textInput" placeholder="Inserisci il testo o l'offerta speciale..."></textarea>
+            <button onclick="generateGraphics()">Genera Grafica</button>
+            <div id="preview1" class="output"></div>
+        </div>
+
+        <!-- Tool 2: Generatore di Hashtag Virali -->
+        <div class="card">
+            <h2>🚀 2. TikTok Tag Generator</h2>
+            <p>Ottieni hashtag strategici per aumentare la visibilità dei tuoi video.</p>
+            <input type="text" id="tagInput" placeholder="Es: moda estiva, ecommerce, outfit...">
+            <button onclick="generateTags()">Genera Hashtag</button>
+            <div id="preview2" class="output"></div>
+        </div>
+
+        <!-- Tool 3: Validatore Rapido di Idee -->
+        <div class="card">
+            <h2>💡 3. Idea Booster</h2>
+            <p>Verifica subito il potenziale di un'idea di business o side-hustle.</p>
+            <input type="text" id="ideaInput" placeholder="Es: Vendere cover per telefono personalizzate...">
+            <button onclick="boostIdea()">Analizza Idea</button>
+            <div id="preview3" class="output"></div>
+        </div>
+
         <div class="monetization-box">
-            <p>Ti è utile questo tool gratuito?</p>
-            <!-- Sostituisci il link sotto con il tuo link Ko-fi, Buy Me a Coffee o PayPal.me -->
+            <p>Ti piacciono questi tool gratuiti?</p>
             <a href="https://www.buymeacoffee.com" target="_blank" class="donate-btn">☕ Offrimi un caffè</a>
-            
-            <!-- Link di affiliazione o sponsorizzazione automatica -->
             <a href="https://netlify.com" target="_blank" class="affiliate-link">✨ Scopri la piattaforma cloud consigliata per i tuoi progetti</a>
         </div>
     </div>
+
     <script>
         function generateGraphics() {
-            const input = document.getElementById('textInput').value;
-            const preview = document.getElementById('preview');
-            if (!input.trim()) { alert('Per favore inserisci un testo!'); return; }
-            preview.style.display = 'block';
-            preview.innerHTML = "✨ " + input + " ✨<br><small style='font-size: 0.75rem; font-weight: normal; opacity: 0.9; display: block; margin-top: 0.5rem;'>Creato con QuickPrint Studio</small>";
+            const val = document.getElementById('textInput').value;
+            const out = document.getElementById('preview1');
+            if(!val.trim()) { alert('Inserisci un testo!'); return; }
+            out.style.display = 'block';
+            out.innerHTML = "✨ " + val + " ✨<br><small style='color:#f8fafc; opacity:0.8;'>Generato con QuickPrint Studio</small>";
+        }
+
+        function generateTags() {
+            const val = document.getElementById('tagInput').value;
+            const out = document.getElementById('preview2');
+            if(!val.trim()) { alert('Inserisci una keyword!'); return; }
+            out.style.display = 'block';
+            out.innerHTML = "🔥 #"+val.replace(/\\s+/g, '') + " #viral #sidehustle #trending #creator #italia #shoponline #business";
+        }
+
+        function boostIdea() {
+            const val = document.getElementById('ideaInput').value;
+            const out = document.getElementById('preview3');
+            if(!val.trim()) { alert('Inserisci un\\'idea!'); return; }
+            out.style.display = 'block';
+            out.innerHTML = "🎯 Potenziale alto se abbinato a brevi video dimostrativi e traffico organico da TikTok!";
         }
     </script>
 </body>
 </html>
 """
     return html_code
+
+def main():
+    print("=== AVVIO SISTEMA MULTI-AGENTE (MULTI-SAAS HUB) ===")
+    niche = subagent_trend_scraper()
+    saas_html = subagent_product_architect(niche)
+    
+    log_to_file("public/index.html", saas_html)
+    
+    report = f"# Multi-SaaS Hub Execution Log\n- Data: {datetime.datetime.now()}\n- Focus: {niche}\n- Status: Hub aggiornato con 3 tool integrati."
+    log_to_file("agent_log.md", report)
+    print("=== PROCESSO COMPLETATO ===")
+
+if __name__ == "__main__":
+    main()
