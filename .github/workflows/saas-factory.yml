@@ -1,0 +1,29 @@
+name: Run SaaS Factory Agent
+
+on:
+  workflow_dispatch: # Ti permette di lanciarlo manualmente quando vuoi
+  schedule:
+    - cron: '0 9 * * 1' # Si esegue automaticamente ogni lunedì alle 9:00
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codice
+        uses: actions/checkout@v4
+
+      - name: Configurazione Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Esecuzione dello sciame di agenti
+        run: python agent_orchestrator.py
+
+      - name: Salva e aggiorna le modifiche nel repository
+        run: |
+          git config --global user.name "SaaS-Bot"
+          git config --global user.email "bot@github.com"
+          git add public/index.html agent_log.md
+          git commit -m "Automated SaaS build: update code & logs" || exit 0
+          git push
