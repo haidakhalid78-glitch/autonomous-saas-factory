@@ -1,19 +1,5 @@
-import os
-import datetime
-
-def log_to_file(filepath, content):
-    dirname = os.path.dirname(filepath)
-    if dirname:
-        os.makedirs(dirname, exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
-
-def subagent_trend_scraper():
-    print("[Agent 1] Analisi dei problemi e della domanda in corso...")
-    return "Micro-Tool Web di Generazione Asset e Mockup Promozionali"
-
 def subagent_product_architect(niche_name):
-    print(f"[Agent 2] Generazione del codice SaaS per: {niche_name}")
+    print(f"[Agent 2] Generazione del codice SaaS con monetizzazione per: {niche_name}")
     
     html_code = """<!DOCTYPE html>
 <html lang="it">
@@ -31,8 +17,13 @@ def subagent_product_architect(niche_name):
         button { width: 100%; padding: 0.9rem; background: #0284c7; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
         button:hover { background: #0369a1; }
         #preview { margin-top: 1.5rem; display: none; padding: 1.5rem; border-radius: 8px; background: linear-gradient(135deg, #6366f1, #a855f7); color: white; font-weight: bold; font-size: 1.2rem; word-wrap: break-word; }
-        .footer-cta { margin-top: 1.5rem; font-size: 0.85rem; color: #64748b; }
-        .footer-cta a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+        
+        /* Sezione Monetizzazione */
+        .monetization-box { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #334155; font-size: 0.85rem; color: #94a3b8; }
+        .donate-btn { display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: #10b981; color: white; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+        .donate-btn:hover { background: #059669; }
+        .affiliate-link { color: #38bdf8; text-decoration: none; display: block; margin-top: 0.8rem; }
+        .affiliate-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -42,8 +33,14 @@ def subagent_product_architect(niche_name):
         <textarea id="textInput" placeholder="Inserisci il tuo testo o l'offerta speciale..."></textarea>
         <button onclick="generateGraphics()">Genera Asset Ora</button>
         <div id="preview"></div>
-        <div class="footer-cta">
-            <p>Ti piace questo tool? <a href="#" target="_blank">Supporta il progetto o scopri di più</a></p>
+        
+        <div class="monetization-box">
+            <p>Ti è utile questo tool gratuito?</p>
+            <!-- Sostituisci il link sotto con il tuo link Ko-fi, Buy Me a Coffee o PayPal.me -->
+            <a href="https://www.buymeacoffee.com" target="_blank" class="donate-btn">☕ Offrimi un caffè</a>
+            
+            <!-- Link di affiliazione o sponsorizzazione automatica -->
+            <a href="https://netlify.com" target="_blank" class="affiliate-link">✨ Scopri la piattaforma cloud consigliata per i tuoi progetti</a>
         </div>
     </div>
     <script>
@@ -56,21 +53,6 @@ def subagent_product_architect(niche_name):
         }
     </script>
 </body>
-</html>"""
+</html>
+"""
     return html_code
-
-def main():
-    print("=== AVVIO SISTEMA MULTI-AGENTE AGENTE AUTONOMO ===")
-    niche = subagent_trend_scraper()
-    saas_html = subagent_product_architect(niche)
-    
-    # Salva la landing page del SaaS nella cartella public
-    log_to_file("public/index.html", saas_html)
-    
-    # Genera un log delle operazioni
-    report = f"# SaaS Execution Log\n- Data: {datetime.datetime.now()}\n- Focus: {niche}\n- Status: Generazione completata con successo."
-    log_to_file("agent_log.md", report)
-    print("=== PROCESSO COMPLETATO ===")
-
-if __name__ == "__main__":
-    main()
